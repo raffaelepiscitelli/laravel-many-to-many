@@ -30,6 +30,18 @@
                 </div>
 
                 <div class="mb-3 input-group">
+                    <label for="technology_id" class="input-group-text">Technology:</label>
+                    <select class="form-select" type="text" name="technology_id" id="technology_id" >
+                        @foreach ($technologies as $techno)
+                            <option value="{{ $techno->id }}"
+                                {{ $techno->id == old('techno_id', $techno->techno_id) ? 'selected' : '' }}>
+                                    {{ $techno->technology }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3 input-group">
                     <label for="author" class="input-group-text">Author of the project:</label>
                     <input class="form-control" type="text" name="author" id="author" value="{{ old('author') }}">
                 </div>

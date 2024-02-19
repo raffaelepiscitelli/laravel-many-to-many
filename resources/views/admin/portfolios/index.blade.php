@@ -17,6 +17,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Type</th>
                         <th scope="col">Project</th>
+                        <th scope="col">Technology</th>
                         <th scope="col">Author</th>
                         <th scope="col">Description</th>
                         <th scope="col">Date</th>
@@ -29,6 +30,11 @@
                         <td scope="row">{{$portfolio->id}}</td>
                         <td>{{ $portfolio->type->name }}</td>
                         <td>{{$portfolio->project}}</td>
+                        <td>
+                            @foreach ($portfolio-> technologies as $tech)
+                                {{$tech->technology}}
+                            @endforeach
+                        </td>
                         <td>{{$portfolio->author}}</td>
                         <td>{{$portfolio->description}}</td>
                         <td>{{$portfolio->date}}</td>

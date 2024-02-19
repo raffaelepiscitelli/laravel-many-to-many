@@ -12,5 +12,9 @@ class Technology extends Model
     use SoftDeletes;
     protected $fillable = [
         'technology'
-    ]; 
+    ];
+
+    public function portfolios(){
+        return $this->belongsToMany(Portfolio::class);
+    }
 }

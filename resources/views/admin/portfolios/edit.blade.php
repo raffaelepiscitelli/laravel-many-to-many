@@ -13,7 +13,7 @@
                 @csrf
                 @method ('PUT')
 
-                <h2 class="m-4">Create a new project and add to your portfolio:</h2>
+                <h2 class="m-4">Edit a project:</h2>
                 <div class="mb-3 input-group">
                     <label for="project" class="input-group-text">Project's name:</label>
                     <input class="form-control" type="text" name="project" id="project" value="{{ old('project', $portfolio->project) }}">
@@ -31,6 +31,18 @@
                 </div>
 
                 <div class="mb-3 input-group">
+                    <label for="technology_id" class="input-group-text">Technology:</label>
+                    <select class="form-select" type="text" name="technology_id" id="technology_id" >
+                        @foreach ($technologies as $techno)
+                            <option value="{{ $techno->id }}"
+                                {{ $techno->id == old('techno_id', $techno->techno_id) ? 'selected' : '' }}>
+                                    {{ $techno->technology }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3 input-group">
                     <label for="author" class="input-group-text">Author of the project:</label>
                     <input class="form-control" type="text" name="author" id="author" value="{{ old('author', $portfolio->author) }}">
                 </div>
@@ -43,7 +55,7 @@
                     <input class="form-control" type="date" name="date" id="date" value="{{ old('date', $portfolio->date) }}">
                 </div>
                 <div class="mb-3 input-group">
-                    <a href="{{route('admin.portfolios.edit', $portfolio)}}"><button class="btn btn-sm btn-success">Show</button></a>
+                    <a href="{{route('admin.portfolios.edit', $portfolio)}}"><button class="btn btn-sm btn-success">Edit</button></a>
                     <button type="reset" class="btn btn-warning m-2">
                         Reset all fields
                     </button>

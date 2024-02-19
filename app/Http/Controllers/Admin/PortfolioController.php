@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use App\Models\Type;
 
@@ -25,7 +26,8 @@ class PortfolioController extends Controller
     public function create()
     {   
         $types = Type::all();
-        return view('admin.portfolios.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.portfolios.create', compact('types', 'technologies'));
     }
 
     /**
@@ -58,7 +60,8 @@ class PortfolioController extends Controller
     public function edit(Portfolio $portfolio)
     {   
         $types = Type::all();
-        return view('admin.portfolios.edit', compact('portfolio', 'types'));
+        $technologies = Technology::all();
+        return view('admin.portfolios.edit', compact('portfolio', 'types', 'technologies'));
     }
 
     /**
